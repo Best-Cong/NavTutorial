@@ -1,0 +1,70 @@
+:root{
+    --body-color:#E4E9F7;
+    --nav-color:#4070F4;
+    --side-nav:#010718;
+    --text-color:#FFF;
+    --search-bar:#F2F2F2;
+    --search-text:#010718;
+}
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+}
+nav{
+    position: fixed; /*dữ nguyên phần tử ngay cả khi cuộn trang*/
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+}
+nav .nav-bar{
+    position: relative; /*sử dụng để làm mốc cho phần tử con & không chiếm dụng gian giống như box*/
+    height: 100%;
+    max-width:1000px;
+    width: 100%;
+    background-color: red;
+    margin: 0 auto; /*auto sẽ tự hiểu là căn giữa*/
+    padding: 0 30px; /*giúp chữ cách dòng 30px*/
+    display: flex; /*giúp dàn trang các phần tử con di chuyển linh hoạt hơn*/
+    align-items: center; /*căn giữa các phần tử bên trong*/
+    justify-content: space-between; /*dãn đều các phần tử*/   
+}
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none; /*bỏ gạch dưới*/
+}
+.nav-bar .nav-links{
+    display: flex;
+    align-items: center;
+}
+.nav-bar .nav-links li{
+    margin: 0 5px;
+    list-style: none; /*bỏ dấu chấm ở đầu*/
+}
+.nav-links li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 400; /*độ dày của chữ (chữ đậm)*/
+    color: var(--text-color);
+    text-decoration: none; /*bỏ gạch dưới*/
+    padding: 10px;
+}
+.nav-links li a::before{ /*tạo một phần tử áo trước thẻ "a"*/
+    content: ''; /* BẮT BUỘC phải có thuộc tính này thì before mới hoạt động */
+    position: absolute; /*định vị tuyệt đối, bốc ra khổi luồng của web*/
+    left: 50%;
+    bottom: 0;
+    transform: translateX(50%); /*di chuyển sang phải 50% của chính nó*/
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.nav-links li:hover a::before{
+    opacity: 1;
+}
